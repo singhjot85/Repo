@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Leftover Food App</title>
+	<link rel="stylesheet" type="text/css" href="x.css">
+	<script src="x.js"></script>
+</head>
+<body>
+	<h1>Leftover Food App</h1>
+	<form id="list-food-form">
+		<label for="food-name">Food name:</label><br>
+		<input type="text" id="food-name" name="food-name"><br>
+
+		<label for="food-category">Category:</label><br>
+		<select id="food-category" name="food-category">
+			<option value="freshly-prepared">Freshly Prepared</option>
+			<option value="leftover">Leftover</option>
+		</select><br>
+
+		<label for="food-photo">Photo:</label><br>
+		<input type="file" id="food-photo" name="food-photo"><br>
+
+		<label for="food-preparation-date">Preparation Date:</label><br>
+		<input type="date" id="food-preparation-date" name="food-preparation-date"><br>
+
+		<label for="food-expiry-date">Expected Expiry Date:</label><br>
+		<input type="date" id="food-expiry-date" name="food-expiry-date"><br>
+
+		<input type="submit" value="List Food">
+	</form>
+	<div id="food-list">
+		
+	</div>
+	<script>
+		// Add event listener to the form's submit event
+		document.getElementById('list-food-form').addEventListener('submit', function(event) {
+			// Prevent the page from refreshing
+			event.preventDefault();
+
+			// Get the form data
+			const foodName = document.getElementById('food-name').value;
+			const foodCategory = document.getElementById('food-category').value;
+			const foodPhoto = document.getElementById('food-photo').files[0];
+			const foodPreparationDate = document.getElementById('food-preparation-date').value;
+			const foodExpiryDate = document.getElementById('food-expiry-date').value;
+
+			// Create a new list item
+			const listItem = document.createElement('li');
+
+			// Add the form data to the list item
+			listItem.textContent = `Name: ${foodName}, Category: ${foodCategory}, Preparation Date: ${foodPreparationDate}, Expiry Date: ${foodExpiryDate}`;
+
+			// Append the list item to the 'food-list' division
+			document.getElementById('food-list').appendChild(listItem);
+		});
+	</script>
+	
+	
+</body>
+</html>
